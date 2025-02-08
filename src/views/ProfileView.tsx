@@ -13,7 +13,7 @@ export default function ProfileView() {
     // get the user data from the useQuery hook cacheados
 
     const queryClient = useQueryClient()
-    const data : User = queryClient.getQueryData(['user'])!
+    const data : User = queryClient.getQueryData(["user"])! // get the user data from the cache
 
     const { register, handleSubmit, formState: { errors } } = useForm<ProfileForm>({ 
         defaultValues: { 
@@ -31,8 +31,11 @@ export default function ProfileView() {
         },
         onSuccess: (data) => {
             toast.success(data)
-            queryClient.invalidateQueries({ queryKey: ['user'] })                    
-        }
+            queryClient.invalidateQueries({ queryKey: ["user"]})             
+        },
+        onMutate: async ()=> {
+            queryClient.invalidateQueries( {queryKey: ["user"]}) // cancel the query to get the user data
+        },
     })
 
     // upload image 

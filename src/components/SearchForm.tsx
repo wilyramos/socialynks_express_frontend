@@ -26,7 +26,6 @@ export default function SearchForm() {
 
     
 
-
     return (
         <form
             onSubmit={ handleSubmit(handleSearch) }

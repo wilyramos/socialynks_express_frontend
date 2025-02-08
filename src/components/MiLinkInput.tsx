@@ -12,9 +12,9 @@ export default function MiLinkInput({ link, handleUrlChange, handleEnableLink }:
     return (
         <>
             <div
-                className="bg-white shadow-md p-2 m-4 rounded-2xl flex items-center gap-1"
+                className="bg-white p-2 m-4 rounded-full flex items-center gap-1"
             >
-                <div className="w-6 h-6 bg-center rounded-full mr-3">
+                <div className="w- h-6 bg-center rounded-full mr-3">
                     <SocialIcon url={link.url} network={link.name} style={{ width: 28, height: 28 }} />
                 </div>
 

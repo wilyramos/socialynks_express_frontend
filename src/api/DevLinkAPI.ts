@@ -42,9 +42,19 @@ export async function updateUser(formData: ProfileForm) {
 }
 
 export async function uploadImage(file: File) {
+
+
+    // CON ESTE ES SUFIECIENTE PARA SUBIR UNA IMAGEN
+    // let formData = new FormData();
+    // formData.append('file', file);
+    // try{
+    //   const { data }  = await api.post<string>('/user/image', formData);
+    //   return data;
+    // }
+
     try {
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append('file', file); // create a FormData object and append the file
         const { data : {image} } : {data: {image : string}} = await api.post('/user/image', formData);
         return image;
     } catch (error) {

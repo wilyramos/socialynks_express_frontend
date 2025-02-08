@@ -38,19 +38,19 @@ export default function LoginView() {
     return (
         <>
 
-            <h1 className="text-white text-2xl font-bold text-center">Iniciar sesión</h1>
+            <h1 className="text-gray-600 text-2xl font-bold text-center ">Iniciar sesión</h1>
 
             <form
                 onSubmit={handleSubmit(handleLogin)}
-                className="bg-gray-300 px-5 py-10 rounded-3xl mt-10"
+                className="px-5 py-10 rounded-2xl mt-10 drop-shadow-xl border-b-2"
             >
                     
                     <div className="mb-5">
-                        <label htmlFor="email" className=" text-gray-600 text-sm font-medium mb-2">Correo electrónico</label>
+                        <label htmlFor="email" className=" text-sm font-medium mb-2">Correo electrónico</label>
                         <input
                             type="email"
                             id="email"
-                            className="w-full px-3 py-3 rounded-2xl"
+                            className="w-full px-3 py-3 rounded-xl border-l-4"
                             {...register("email", { 
                                 required: "El correo electrónico es requerido",
                                 pattern: {
@@ -63,11 +63,11 @@ export default function LoginView() {
                     </div>
     
                     <div className="mb-5">
-                        <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">Contraseña</label>
+                        <label htmlFor="password" className="text-sm font-medium mb-2">Contraseña</label>
                         <input
                             type="password"
                             id="password"
-                            className="w-full px-3 py-3 rounded-2xl"
+                            className="w-full px-3 py-3 rounded-xl border-l-4"
                             {...register("password", { required: 'La contraseña es requerida' })}
                         />
                         {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
@@ -75,16 +75,18 @@ export default function LoginView() {
     
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold p-3 rounded-2xl"
+                        className="w-full bg-sky-900 hover:bg-sky-800 text-white font-bold p-3 rounded-2xl"
                     >
                         Iniciar sesión
                     </button>
             </form>
                 
 
-            <nav className="mt-10">
-                <p className=" text-white">¿No tienes una cuenta?</p>
-                <Link to="/auth/register ">Crear cuenta</Link>
+            <nav className="mt-10 text-center">
+                <p className=" text-gray-600">¿No tienes una cuenta?</p>
+                <Link to="/auth/register 
+                " className="text-sky-900 font-bold hover:underline
+                ">Crear cuenta</Link>
 
             </nav>
         </>

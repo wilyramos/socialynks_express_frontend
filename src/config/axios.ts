@@ -13,5 +13,6 @@ api.interceptors.request.use((config) => {
     }
     return config;
 })
+// Si hay un token en el localStorage, se agrega al header de la petición.
 
 export default api;

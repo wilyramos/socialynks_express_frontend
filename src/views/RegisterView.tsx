@@ -1,4 +1,4 @@
-import { Link , useNavigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import ErrorMessage from "../components/ErrorMessage";
 import api from "../config/axios";
@@ -14,7 +14,7 @@ export default function RegisterView() {
     const navigate = useNavigate()
 
     // values initials for form and types errors
-    const initialValues : RegisterForm = {
+    const initialValues: RegisterForm = {
         handle: location?.state?.handle || "",
         name: "",
         email: "",
@@ -26,23 +26,18 @@ export default function RegisterView() {
     const { register, watch, reset, handleSubmit, formState: { errors } } = useForm({
         defaultValues: initialValues
     });
-    
-    // compare passwords
+
+    // Compare password and passwordConfirm with watch
     const password = watch("password", "");
-    const passwordConfirm = watch("passwordConfirm", "");
 
-    if (password !== passwordConfirm) {
-        console.log("Las contraseñas no coinciden")
-    }
-
-    const handleRegister = async (formData : RegisterForm) => {
+    const handleRegister = async (formData: RegisterForm) => {
         try {
             const { data } = await api.post(`/auth/register`, formData)
             toast.success(data)
             reset()
             navigate('/auth/login')
         } catch (error) {
-            if(isAxiosError(error) && error.response) {
+            if (isAxiosError(error) && error.response) {
                 toast.error(error.response.data.error)
             }
         }
@@ -50,42 +45,42 @@ export default function RegisterView() {
 
     return (
         <>
-            <h1 className="text-white text-2xl font-bold text-center">Crear cuenta</h1>
+            <h1 className="text-xl font-bold text-center">Crear cuenta</h1>
 
             <form
                 onSubmit={handleSubmit(handleRegister)}
-                className="bg-gray-300 px-5 py-10 rounded-3xl mt-10"
+                className="px-2 py-4 rounded-xl drop-shadow-xl border-b-2 "
             >
 
-                <div className="mb-5">
+                <div className="mb-2">
                     <label htmlFor="handle" className=" text-gray-600 text-sm font-medium mb-2">Nombre de usuario</label>
                     <input
                         type="text"
                         id="handle"
-                        className="w-full px-3 py-3 rounded-2xl"
+                        className="w-full px-3 py-2 rounded-xl border-l-4"
                         {...register("handle", { required: "El nombre de usuario es requerido" })}
                     />
                     {errors.handle && <ErrorMessage>{errors.handle.message}</ErrorMessage>}
                 </div>
 
-                <div className="mb-5">
+                <div className="mb-2">
                     <label htmlFor="name" className=" text-gray-600 text-sm font-medium mb-2">Nombre</label>
                     <input
                         type="text"
                         id="name"
-                        className="w-full px-3 py-3 rounded-2xl"
+                        className="w-full px-3 py-2 rounded-xl border-l-4"
                         {...register("name", { required: "El nombre es requerido" })}
                     />
                     {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
                 </div>
 
-                <div className="mb-5">
+                <div className="mb-2">
                     <label htmlFor="email" className="block text-gray-600 text-sm font-medium mb-2">Correo electrónico</label>
                     <input
                         type="email"
                         id="email"
-                        className="w-full px-3 py-3 rounded-2xl"
-                        {...register("email", { 
+                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        {...register("email", {
                             required: "El correo electrónico es requerido",
                             pattern: {
                                 value: /\S+@\S+\.\S+/,
@@ -96,56 +91,55 @@ export default function RegisterView() {
                     {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
                 </div>
 
-                <div className="mb-5">
+                <div className="mb-2">
                     <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">Contraseña</label>
                     <input
                         type="password"
                         id="password"
-                        className="w-full px-3 py-3 rounded-2xl"
-                        {...register("password", { 
+                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        {...register("password", {
                             required: "La contraseña es requerida",
                             minLength: {
                                 value: 6,
                                 message: "La contraseña debe tener al menos 6 caracteres"
-                            } 
+                            }
                         })}
                     />
                     {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
                 </div>
 
-                <div className="mb-5">
+                <div className="mb-2">
                     <label htmlFor="passwordConfirm" className="block text-gray-600 text-sm font-medium mb-2">Confirmar contraseña</label>
                     <input
                         type="password"
                         id="passwordConfirm"
-                        className="w-full px-3 py-3 rounded-2xl"
-                        {...register("passwordConfirm", { 
+                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        {...register("passwordConfirm", {
                             required: "La confirmación de la contraseña es requerida",
-                            minLength: {
-                                value: 6,
-                                message: "La contraseña debe tener al menos 6 caracteres"
-                            },
+                            validate: value => value === password || "Las contraseñas no coinciden"
                         })}
                     />
                     {errors.passwordConfirm && <ErrorMessage>{errors.passwordConfirm.message}</ErrorMessage>}
                 </div>
 
-                <button
-                    type="submit"
-                    className="w-full bg-cyan-900 text-white font-semibold py-3 rounded-2xl"
-                >
-                    Crear cuenta
-                </button>
-                
+                <div className="flex justify-end">
 
-                
-                
+                    <button
+                        type="submit"
+                        className=" bg-sky-900 hover:bg-sky-800 text-white font-bold p-3 rounded-xl inline-flex justify-center px-6"
+                    >
+                        Crear cuenta
+                    </button>
+                </div>
+
+
+
             </form>
 
 
-            <nav className="mt-5">
-                <p className=" text-white">¿Ya tienes una cuenta?</p>
-                <Link to="/auth/login">Iniciar sesión</Link>
+            <nav className="mt-2">
+                <p className=" text-gray-600">¿Ya tienes una cuenta?</p>
+                <Link className="text-sky-900 font-bold hover:underline" to="/auth/login">Iniciar sesión</Link>
             </nav>
         </>
 
