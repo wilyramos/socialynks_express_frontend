@@ -24,6 +24,7 @@ export default function AppLayout() {
                 <div className="flex justify-center items-center h-screen">
                     <p>Cargando...</p>
                 </div>
+                
             </>
         )
         
