@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getUser } from "../api/DevLinkAPI";
 import { Navigate } from "react-router-dom";
 import MiLink from "../components/MiLink.tsx";
-import Header from "../components/Header";
+import Header from "../components/Header.tsx";
 
 export default function AppLayout() {
 

@@ -19,7 +19,7 @@ export default function NavigationTabs() {
     }
 
     return (
-        <div className='md:m-2'>
+        <div className=''>
             <div className="sm:hidden">
                 <label htmlFor="tabs" className="sr-only">
                     Select a tab
@@ -39,7 +39,7 @@ export default function NavigationTabs() {
                 </select>
             </div>
 
-            <div className="hidden sm:block">
+            <div className="hidden sm:block mx-6">
                 <div className="border-b-2 border-gray-200">
                     <nav className=" flex space-x-8"  aria-label="Tabs">
                         {tabs.map((tab) => (

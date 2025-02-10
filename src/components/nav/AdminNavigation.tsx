@@ -1,4 +1,5 @@
 import { useQueryClient } from "@tanstack/react-query"
+import NavigationTabs from "../NavigationTabs"
 
 
 export default function AdminNavigation() {
@@ -6,15 +7,21 @@ export default function AdminNavigation() {
     const queryClient = useQueryClient()
     const logout = () => {
         localStorage.removeItem('token_milink_auth')
-        queryClient.invalidateQueries({ queryKey : ['user'] })
+        queryClient.invalidateQueries({ queryKey: ['user'] })
     }
 
     return (
-      <button
-          className=" bg-lime-500 p-2 text-slate-800 uppercase font-black text-xs rounded-lg cursor-pointer"
-          onClick={logout}
-      >
-          Cerrar Sesión
-      </button>
+        <div className="flex items-center justify-between">
+            <NavigationTabs />
+            <button
+                
+
+                className=" w-full text-gray-600  hover:text-gray-900 border-l-4 border-indigo-500 transition-colors duration-300 focus:outline-none mx-auto"
+
+                onClick={logout}
+            >
+                Cerrar Sesión
+            </button>
+        </div>
     )
 }

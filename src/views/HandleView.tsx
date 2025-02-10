@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getUserByHandle } from '../api/DevLinkAPI';
 import HandleData from '../components/HandleData';
 
-
 export default function HandleView() {
 
     const params = useParams();
@@ -15,13 +14,10 @@ export default function HandleView() {
     })
 
     if (isLoading) {
-        return <p className='text-center text-white'>Cargando...</p>
+        return <p className='text-center'>Cargando...</p>
     }
 
     if(error) return <Navigate to="/404" />
 
     if(data) return <HandleData data={data} />
-
-    
-   
 }

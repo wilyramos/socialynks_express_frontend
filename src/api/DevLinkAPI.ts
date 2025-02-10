@@ -8,18 +8,18 @@ export async function getUser() {
     if (!token) {
         throw new Error('Token no encontrado');
     }
-    try{
+    try {
         const { data } = await api<User>('/user') // make a request to the /user endpoint
         // here actiton the interceptor to add the token to the request
         return data; // return the user data to the useQuery hook
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
-          } else if (error instanceof Error) {
+        } else if (error instanceof Error) {
             throw new Error(error.message);
-          } else {
+        } else {
             throw new Error('Error desconocido');
-          }
+        }
     }
 }
 
@@ -28,16 +28,16 @@ export async function updateUser(formData: ProfileForm) {
 
         const { data } = await api.patch<string>('/user', formData) // make a request to the /user endpoint
         return data; // return the user data to the useQuery hook
-        
-        
+
+
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
-          } else if (error instanceof Error) {
+        } else if (error instanceof Error) {
             throw new Error(error.message);
-          } else {
+        } else {
             throw new Error('Error desconocido');
-          }
+        }
     }
 }
 
@@ -55,32 +55,32 @@ export async function uploadImage(file: File) {
     try {
         const formData = new FormData();
         formData.append('file', file); // create a FormData object and append the file
-        const { data : {image} } : {data: {image : string}} = await api.post('/user/image', formData);
+        const { data: { image } }: { data: { image: string } } = await api.post('/user/image', formData);
         return image;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
-          } else if (error instanceof Error) {
+        } else if (error instanceof Error) {
             throw new Error(error.message);
-          } else {
+        } else {
             throw new Error('Error desconocido');
-          }
+        }
     }
 }
 
 export async function getUserByHandle(handle: string) {
     try {
         const { data } = await api<userHandle>(`/${handle}`);
-        console.log(data);
+
         return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
-          } else if (error instanceof Error) {
+        } else if (error instanceof Error) {
             throw new Error(error.message);
-          } else {
+        } else {
             throw new Error('Error desconocido');
-          }
+        }
     }
 }
 
@@ -91,10 +91,10 @@ export async function searchByHandle(handle: string) {
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
-          } else if (error instanceof Error) {
+        } else if (error instanceof Error) {
             throw new Error(error.message);
-          } else {
+        } else {
             throw new Error('Error desconocido');
-          }
+        }
     }
 }
