@@ -8,6 +8,7 @@ import ProfileView from "./views/ProfileView";
 import HandleView from "./views/HandleView";
 import NotFoundView from "./views/NotFoundView";
 import HomeView from "./views/HomeView";
+import FooterLayout from "./layouts/FooterLayout";
 
 
 export default function Router() {
@@ -25,7 +26,7 @@ export default function Router() {
             </Route>
 
             {/* Ruta para el handle */}
-            <Route path="/:handle" element={<AuthLayout />}>
+            <Route path="/:handle" element={<FooterLayout />}>
                 <Route element={<HandleView />} index={true}/>
             </Route>
 

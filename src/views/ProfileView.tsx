@@ -70,10 +70,10 @@ export default function ProfileView() {
 
   return (
       <form 
-          className="bg-white p-10 rounded-lg space-y-5"
+          className="bg-white p-10 rounded-2xl space-y-5 m-2"
           onSubmit={handleSubmit(handleUserProfileForm)}
       >
-          <legend className="text-2xl text-slate-800 text-center">Editar Información</legend>
+          <legend className="text-2xl text-slate-800 text-center ">Editar Información</legend>
           <div className="grid grid-cols-1 gap-2">
               <label
                   htmlFor="handle"
@@ -116,9 +116,8 @@ export default function ProfileView() {
 
           <input
               type="submit"
-              className="bg-cyan-400 p-2 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
+              className="bg-indigo-500 p-2 text-lg w-full uppercase text-white rounded-lg cursor-pointer"
               value='Guardar Cambios'
-
           />
       </form>
   )

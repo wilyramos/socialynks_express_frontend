@@ -33,7 +33,7 @@ export default function SearchForm() {
             <div className="relative flex items-center  bg-white  px-2">
                 <label
                     htmlFor="handle"
-                >milink.com/</label>
+                >Socialynks.com/</label>
                 <input
                     type="text"
                     id="handle"
@@ -62,8 +62,8 @@ export default function SearchForm() {
 
             <input
                 type="submit"
-                className="bg-cyan-400 p-3 text-lg w-full uppercase text-slate-600 rounded-lg font-bold cursor-pointer"
-                value='Obtener mi Link'
+                className="bg-indigo-500 p-3 text-lg uppercase text-white rounded-lg font-bold cursor-pointer"
+                value='Obtener mi enlace'
             />
         </form>
     )

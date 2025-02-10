@@ -16,7 +16,7 @@ export default function Header() {
                     />
                 </div>
                 {/* <NavigationTabs /> */}
-                <nav className="md:w-1/3 md:flex md:justify-end ">
+                <nav className=" md:flex md:justify-end ">
                     {location.pathname === "/" ? <HomeNavigation /> : <AdminNavigation />}       
                 </nav>
             </div>

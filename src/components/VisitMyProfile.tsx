@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { IoMdLink } from 'react-icons/io'
 import { useState } from 'react'
-
+import { FiCopy, FiCheck } from 'react-icons/fi'
 
 export default function VisitMyProfile({ handle }: { handle: string }) {
 
@@ -22,20 +22,30 @@ export default function VisitMyProfile({ handle }: { handle: string }) {
             <div className="flex items-center">
                 <IoMdLink className="text-4xl text-indigo-600" />
                 <Link
-                    className="ml-4 font-bold text-slate-800 text-2xl hover:text-indigo-600 transition-colors"
+                    className="font-bold text-indigo-500 text-xl hover:text-indigo-600 transition-colors"
                     to={`/${handle}`}
                     target="_blank"
                     rel="noreferrer noopener"
                 >
-                    Visitar Mi Perfil: /{handle}
+                    Visitar mi perfil: /{handle}
                 </Link>
             </div>
 
             <button
                 onClick={handleCopy}
-                className="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors focus:outline-none"
+                className="flex items-center px-4 py-2  text-gray-600 rounded-lg hover:text-gray-900 transition-colors focus:outline-none"
             >
-                {isCopied ? 'Copiado!' : 'Copiar'}
+                {isCopied ? (
+                    <>
+                        <FiCheck className="text-xl" />
+                        <span className="ml-2">Copiado</span>
+                    </>
+                ) : (
+                    <>
+                        <FiCopy className="text-xl" />
+                        <span className="ml-2">Copiar</span>
+                    </>
+                ) }
             </button>
         </div>
     );

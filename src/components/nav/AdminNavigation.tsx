@@ -11,12 +11,10 @@ export default function AdminNavigation() {
     }
 
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex justify-between gap-8">
             <NavigationTabs />
             <button
-                
-
-                className=" w-full text-gray-600  hover:text-gray-900 border-l-4 border-indigo-500 transition-colors duration-300 focus:outline-none mx-auto"
+                className=" w-full ml-1 text-gray-600  hover:text-gray-500 border-l-4 border-indigo-500 transition-colors duration-300 focus:outline-none mx-auto"
 
                 onClick={logout}
             >

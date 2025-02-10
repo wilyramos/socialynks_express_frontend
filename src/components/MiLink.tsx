@@ -10,6 +10,7 @@ import MiLinkPantalla from './MiLinkPantalla';
 import { SocialNetwork, type User } from '../types';
 import Header from './Header';
 import VisitMyProfile from './VisitMyProfile';
+import Footer from '../layouts/Footer';
 
 // Tipado de las propiedades que recibe el componente
 type MiLinkProps = {
@@ -103,7 +104,7 @@ export default function MiLink({ data }: MiLinkProps) {
                             {data.image && (
                                 <img
                                     src={data.image}
-                                    className="mx-auto max-w-[250px]"
+                                    className="w-full max-w-[100px] rounded-full object-cover mx-auto"
                                     alt={`${data.handle} profile`}
                                 />
                             )}
@@ -132,6 +133,8 @@ export default function MiLink({ data }: MiLinkProps) {
                     </div>
                 </main>
             </div>
+
+            <Footer />
 
             {/* Toaster para mostrar notificaciones */}
             <Toaster position="top-right" />

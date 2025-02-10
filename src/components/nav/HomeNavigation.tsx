@@ -14,12 +14,12 @@ export default function HomeNavigation() {
     return (
         <>
             <Link
-                className="w-full text-gray-600 hover:text-gray-900 border-l-4 border-indigo-500 transition-colors duration-300 focus:outline-none mx-auto font-bold"
+                className="w-full text-gray-600 hover:text-gray-900 border-l-4 border-indigo-500 transition-colors duration-300 focus:outline-none font-bold text-center px-4"
                 to={`/auth/login`}
             >
                 {
                     isLogin() ? 
-                    <Link to='/admin'>Mi Perfil</Link>
+                    <Link to='/admin' className="">Mi Perfil</Link>
                     :
                     'Iniciar Sesión'
                 }

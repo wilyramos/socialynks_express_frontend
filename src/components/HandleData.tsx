@@ -9,12 +9,12 @@ export default function HandleData({ data }: HandleDataProps) {
 
     const links: SocialNetwork[] = JSON.parse(data.links).filter((link: SocialNetwork) => link.enabled)
 
-    console.log(links)
+    // console.log(links)
     return (
         <div className="space-y-2 text-gray-600">
             <p className="text-3xl text-center font-black">{data.handle}</p> 
             {data.image && <img src={data.image} alt={data.handle} className="w-full max-w-[100px] rounded-full object-cover mx-auto" />}
-            <p className="text-lg text-center font-bold">{data.description}</p>
+            <p className="text-lg text-center">{data.description}</p>
 
             <div className="flex flex-col gap-2">
                 {links.length ?
@@ -35,6 +35,8 @@ export default function HandleData({ data }: HandleDataProps) {
                     ))
                     : <p className="text-center">No hay enlaces</p>}
             </div>
+            
         </div>
+
     )
 }

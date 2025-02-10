@@ -75,7 +75,7 @@ export default function LoginView() {
     
                     <button
                         type="submit"
-                        className="w-full bg-sky-900 hover:bg-sky-800 text-white font-bold p-3 rounded-2xl"
+                        className="w-full bg-indigo-500 hover:bg-indigo-800 text-white font-bold p-3 rounded-2xl"
                     >
                         Iniciar sesión
                     </button>
@@ -85,7 +85,7 @@ export default function LoginView() {
             <nav className="mt-10 text-center">
                 <p className=" text-gray-600">¿No tienes una cuenta?</p>
                 <Link to="/auth/register 
-                " className="text-sky-900 font-bold hover:underline
+                " className="text-indigo-500 font-bold hover:underline
                 ">Crear cuenta</Link>
 
             </nav>
