@@ -33,9 +33,6 @@ export default function ProfileView() {
             toast.success(data)
             queryClient.invalidateQueries({ queryKey: ["user"]})             
         },
-        onMutate: async ()=> {
-            queryClient.invalidateQueries( {queryKey: ["user"]}) // cancel the query to get the user data
-        },
     })
 
     // upload image 
@@ -65,7 +62,7 @@ export default function ProfileView() {
         const user : User = queryClient.getQueryData(['user'])!
         user.description = formData.description
         user.handle = formData.handle
-        updateProfileMutation.mutate(formData)
+        updateProfileMutation.mutate(user)
     }
 
   return (
