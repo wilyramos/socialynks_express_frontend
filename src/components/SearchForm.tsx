@@ -29,7 +29,7 @@ export default function SearchForm() {
     return (
         <form
             onSubmit={ handleSubmit(handleSearch) }
-            className="space-y-5">
+            className="space-y-2">
             <div className="relative flex items-center  bg-white  px-2">
                 <label
                     htmlFor="handle"
@@ -62,7 +62,7 @@ export default function SearchForm() {
 
             <input
                 type="submit"
-                className="bg-indigo-500 p-3 text-lg uppercase text-white rounded-lg font-bold cursor-pointer"
+                className="bg-indigo-500 p-3 uppercase text-white rounded-lg font-bold cursor-pointer"
                 value='Obtener mi enlace'
             />
         </form>
