@@ -38,7 +38,7 @@ export default function HomeView() {
     return (
         <>
             <Header />
-            <main className="md:py-20 flex flex-col items-center justify-center p-6 bg-gray-100">
+            <main className="md:py-20 flex flex-col items-center justify-center p-6 bg-gray-100 ">
                 <div className="w-full max-w-3xl text-center space-y-8">
                     <div className="h-20 flex items-center justify-center">
                         <motion.h1 
@@ -75,7 +75,7 @@ export default function HomeView() {
                             <p className="text-xs sm:text-sm mt-1 hidden md:block">Comparte y llega a más personas.</p>
                         </div>
                     </div>
-                    <div className="mt-8 w-full max-w-md">
+                    <div className="">
                         <SearchForm />
                     </div>
                 </div>
