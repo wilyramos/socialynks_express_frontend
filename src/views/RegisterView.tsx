@@ -6,12 +6,14 @@ import type { RegisterForm } from "../types";
 import { isAxiosError } from "axios";
 import { toast } from "sonner";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 
 export default function RegisterView() {
 
     const location = useLocation()
     const navigate = useNavigate()
+    const [ isLoading, setLoading ] = useState(false)
 
     // values initials for form and types errors
     const initialValues: RegisterForm = {
@@ -31,55 +33,60 @@ export default function RegisterView() {
     const password = watch("password", "");
 
     const handleRegister = async (formData: RegisterForm) => {
+        const loadingToast = toast.loading('Creando cuenta')
+        setLoading(true)
         try {
             const { data } = await api.post(`/auth/register`, formData)
             toast.success(data)
+            loadingToast && toast.dismiss(loadingToast)
             reset()
             navigate('/auth/login')
         } catch (error) {
+            toast.dismiss(loadingToast)
             if (isAxiosError(error) && error.response) {
                 toast.error(error.response.data.error)
             }
+        } finally {
+            setLoading(false)
         }
     }
 
     return (
         <>
-            <h1 className="text-xl font-bold text-center">Crear cuenta</h1>
-
+            <h1 className="text-gray-600 text-2xl font-bold text-center">Crear cuenta</h1>
+            <p className="text-gray-400 text-center mt-2">Ingresa tus datos para crear una cuenta</p>
             <form
                 onSubmit={handleSubmit(handleRegister)}
-                className="px-2 py-4 rounded-xl drop-shadow-xl border-b-2 "
+                className="px-5 py-2 rounded-2xl mt-5 mx-4 drop-shadow-xl border-b-2"
             >
-
                 <div className="mb-2">
-                    <label htmlFor="handle" className=" text-gray-600 text-sm font-medium mb-2">Nombre de usuario</label>
+                    <label htmlFor="handle" className="text-sm font-medium mb-2 block">Nombre de usuario</label>
                     <input
                         type="text"
                         id="handle"
-                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        className="w-full px-3 py-2 rounded-2xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 shadow-lg hover:shadow-md bg-slate-50"
                         {...register("handle", { required: "El nombre de usuario es requerido" })}
                     />
                     {errors.handle && <ErrorMessage>{errors.handle.message}</ErrorMessage>}
                 </div>
 
                 <div className="mb-2">
-                    <label htmlFor="name" className=" text-gray-600 text-sm font-medium mb-2">Nombre</label>
+                    <label htmlFor="name" className="text-sm font-medium mb-2 block">Nombre</label>
                     <input
                         type="text"
                         id="name"
-                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        className="w-full px-3 py-2 rounded-2xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 shadow-lg hover:shadow-md bg-slate-50"
                         {...register("name", { required: "El nombre es requerido" })}
                     />
                     {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
                 </div>
 
                 <div className="mb-2">
-                    <label htmlFor="email" className="block text-gray-600 text-sm font-medium mb-2">Correo electrónico</label>
+                    <label htmlFor="email" className="text-sm font-medium mb-2 block">Correo electrónico</label>
                     <input
                         type="email"
                         id="email"
-                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        className="w-full px-3 py-2 rounded-2xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 shadow-lg hover:shadow-md bg-slate-50"
                         {...register("email", {
                             required: "El correo electrónico es requerido",
                             pattern: {
@@ -92,11 +99,11 @@ export default function RegisterView() {
                 </div>
 
                 <div className="mb-2">
-                    <label htmlFor="password" className="block text-gray-600 text-sm font-medium mb-2">Contraseña</label>
+                    <label htmlFor="password" className="text-sm font-medium mb-2 block">Contraseña</label>
                     <input
                         type="password"
                         id="password"
-                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        className="w-full px-3 py-2 rounded-2xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 shadow-lg hover:shadow-md bg-slate-50"
                         {...register("password", {
                             required: "La contraseña es requerida",
                             minLength: {
@@ -109,11 +116,11 @@ export default function RegisterView() {
                 </div>
 
                 <div className="mb-2">
-                    <label htmlFor="passwordConfirm" className="block text-gray-600 text-sm font-medium mb-2">Confirmar contraseña</label>
+                    <label htmlFor="passwordConfirm" className="text-sm font-medium mb-2 block">Confirmar contraseña</label>
                     <input
                         type="password"
                         id="passwordConfirm"
-                        className="w-full px-3 py-2 rounded-xl border-l-4"
+                        className="w-full px-3 py-2 rounded-2xl border border-gray-300 focus:ring-2 focus:ring-indigo-500 shadow-lg hover:shadow-md bg-slate-50"
                         {...register("passwordConfirm", {
                             required: "La confirmación de la contraseña es requerida",
                             validate: value => value === password || "Las contraseñas no coinciden"
@@ -122,26 +129,21 @@ export default function RegisterView() {
                     {errors.passwordConfirm && <ErrorMessage>{errors.passwordConfirm.message}</ErrorMessage>}
                 </div>
 
-                <div className="flex justify-end">
-
-                    <button
-                        type="submit"
-                        className=" bg-sky-900 hover:bg-sky-800 text-white font-bold p-3 rounded-xl inline-flex justify-center px-6"
-                    >
-                        Crear cuenta
-                    </button>
-                </div>
-
-
-
+                <button
+                    type="submit"
+                    className="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-bold p-3 rounded-2xl disabled:opacity-50"
+                    disabled={isLoading}
+                >
+                    {isLoading ? "Registrando..." : "Crear cuenta"}
+                </button>
             </form>
 
-
-            <nav className="mt-2">
-                <p className=" text-gray-600">¿Ya tienes una cuenta?</p>
-                <Link className="text-sky-900 font-bold hover:underline" to="/auth/login">Iniciar sesión</Link>
+            <nav className="mt-10 text-center">
+                <p className="text-gray-600">¿Ya tienes una cuenta?</p>
+                <Link to="/auth/login" className="text-indigo-600 font-bold hover:underline">
+                    Iniciar sesión
+                </Link>
             </nav>
         </>
-
-    )
+    );
 }

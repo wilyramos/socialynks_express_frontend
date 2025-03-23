@@ -5,7 +5,7 @@ import Logo from "../components/Logo";
 export default function AuthLayout() {
     return (
         <>
-            <div className="bg-gray-50 min-h-screen">
+            <div className="min-h-screen">
                 <div className="max-w-md mx-auto">
                     <Logo />
                     <div className="py-10">
