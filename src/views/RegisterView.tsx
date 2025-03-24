@@ -25,7 +25,7 @@ export default function RegisterView() {
     }
 
     // useForm hook
-    const { register, watch, reset, handleSubmit, formState: { errors } } = useForm({
+    const { register, watch, handleSubmit, formState: { errors } } = useForm({
         defaultValues: initialValues
     });
 
