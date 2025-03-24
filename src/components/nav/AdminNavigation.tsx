@@ -1,25 +1,28 @@
-import { useQueryClient } from "@tanstack/react-query"
-import NavigationTabs from "../NavigationTabs"
-
+import { useQueryClient } from "@tanstack/react-query";
+import NavigationTabs from "../NavigationTabs";
+import { PowerIcon } from '@heroicons/react/20/solid';
 
 export default function AdminNavigation() {
-
-    const queryClient = useQueryClient()
+    const queryClient = useQueryClient();
     const logout = () => {
-        localStorage.removeItem('token_milink_auth')
-        queryClient.invalidateQueries({ queryKey: ['user'] })
-    }
+        localStorage.removeItem('token_milink_auth');
+        queryClient.invalidateQueries({ queryKey: ['user'] });
+    };
 
     return (
-        <div className="flex flex-col md:justify-between gap-8 ">
+        <div className="flex flex-col md:justify-between gap-8 items-center justify-center"> {/* Agregamos items-center y justify-center */}
             <NavigationTabs />
-            <button
-                className=" w-full ml-1 text-gray-600  hover:text-gray-500 border-l-4 border-indigo-500 transition-colors duration-300 focus:outline-none mx-auto"
 
+            <button
+                className="group inline-flex items-center border-b-2 py-2 px-1 text-base sm:text-lg border-transparent text-gray-500 hover:border-gray-500 hover:text-gray-700 "
                 onClick={logout}
             >
-                Cerrar Sesión
+                <PowerIcon
+                    className="text-gray-400 group-hover:text-gray-500 -ml-0.5 mr-2 h-5 w-5"
+                    aria-hidden="true"
+                />
+                <span>Cerrar Sesión</span>
             </button>
         </div>
-    )
+    );
 }
