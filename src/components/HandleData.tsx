@@ -14,7 +14,7 @@ export default function HandleData({ data }: HandleDataProps) {
         <div className="space-y-2 text-gray-600">
             <p className="text-3xl text-center font-black">{data.handle}</p> 
             {data.image && <img src={data.image} alt={data.handle} className="w-full max-w-[100px] rounded-full object-cover mx-auto" />}
-            <p className="text-lg text-center">{data.description}</p>
+            <p className="text-center font-light ">{data.description}</p>
 
             <div className="flex flex-col gap-2">
                 {links.length ?

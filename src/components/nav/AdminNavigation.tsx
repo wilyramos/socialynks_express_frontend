@@ -12,7 +12,6 @@ export default function AdminNavigation() {
     return (
         <div className="flex flex-col md:justify-between gap-8 items-center justify-center"> {/* Agregamos items-center y justify-center */}
             <NavigationTabs />
-
             <button
                 className="group inline-flex items-center border-b-2 py-2 px-1 text-base sm:text-lg border-transparent text-gray-500 hover:border-gray-500 hover:text-gray-700 "
                 onClick={logout}

@@ -14,7 +14,7 @@ export default function NavigationTabs() {
     const location = useLocation()
     const navigate = useNavigate()
 
-    const handleChange = (e : React.ChangeEvent<HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         navigate(e.target.value)
     }
 
@@ -28,10 +28,10 @@ export default function NavigationTabs() {
                     id="tabs"
                     name="tabs"
                     className="block w-full rounded-md border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                    onChange={ handleChange }
+                    onChange={handleChange}
                 >
                     {tabs.map((tab) => (
-                        <option 
+                        <option
                             value={tab.href}
                             key={tab.name}
                         >{tab.name}</option>
@@ -41,7 +41,7 @@ export default function NavigationTabs() {
 
             <div className="hidden sm:block mx-6">
                 <div className="border-gray-200">
-                    <nav className=" flex flex-col space-y-6"  aria-label="Tabs">
+                    <nav className=" flex flex-col space-y-6" aria-label="Tabs">
                         {tabs.map((tab) => (
                             <Link
                                 key={tab.name}

@@ -6,6 +6,5 @@ export default function Logo() {
         <Link to="/">
             <img src="/logo.svg" className="w-full block  max-h-20" alt="logotipo" />
         </Link>
-        
     )
 }
