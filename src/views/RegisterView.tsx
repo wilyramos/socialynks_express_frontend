@@ -40,7 +40,6 @@ export default function RegisterView() {
             // save token in localstorage
             localStorage.setItem('token_milink_auth', data)
             toast.success('Cuenta creada exitosamente')
-            
             // toast.success(data)
             // console.log(data)
             loadingToast && toast.dismiss(loadingToast)
