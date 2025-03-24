@@ -70,7 +70,7 @@ export default function ProfileView() {
           className="bg-white p-10 rounded-2xl space-y-5 m-2"
           onSubmit={handleSubmit(handleUserProfileForm)}
       >
-          <legend className="text-2xl text-slate-800 text-center ">Editar Información</legend>
+          <legend className="text-2xl text-slate-600 text-center ">Editar Información</legend>
           <div className="grid grid-cols-1 gap-2">
               <label
                   htmlFor="handle"

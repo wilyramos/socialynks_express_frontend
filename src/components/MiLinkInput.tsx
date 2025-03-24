@@ -10,36 +10,30 @@ type MiLinkInputProps = {
 
 export default function MiLinkInput({ link, handleUrlChange, handleEnableLink }: MiLinkInputProps) {
     return (
-        <>
-            <div
-                className="bg-white p-2 m-4 rounded-full flex items-center gap-1"
-            >
-                <div className="w- h-6 bg-center rounded-full mr-3">
-                    <SocialIcon url={link.url} network={link.name} style={{ width: 28, height: 28 }} />
-                </div>
-
-                <input
-                    type="text"
-                    className="w-full border-none bg-slate-100 rounded-lg p-2" 
-                    placeholder={`Tu ${link.name}`}
-                    value={link.url}
-                    onChange={handleUrlChange}
-                    name={link.name}
-                />
-                <Switch
-                    checked={link.enabled}
-                    onChange={() => handleEnableLink(link.name)}
-                    className={`relative inline-flex items-center h-6 rounded-xl w-12 transition-colors duration-300 ${link.enabled ? 'bg-blue-600' : 'bg-gray-200'
-                        }`}
-                >
-                    <span
-                        className={`inline-block w-4 h-4 bg-white rounded-full transition-transform transform duration-300 ease-in-out ${link.enabled ? 'translate-x-5' : 'translate-x-1'
-                            }`}
-                    />
-                </Switch>
+        <div className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-md transition-all duration-300 hover:shadow-lg">
+            <div className="w-8 h-8 rounded-full overflow-hidden">
+                <SocialIcon url={link.url} network={link.name} style={{ width: 28, height: 28 }} />
             </div>
 
-        </>
+            <input
+                type="text"
+                className="flex-1 border-none bg-transparent text-xs md:text-base sm:text-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-0 "
+                placeholder={`Tu ${link.name}`}
+                value={link.url}
+                onChange={handleUrlChange}
+                name={link.name}
+            />
 
-    )
+            <Switch
+                checked={link.enabled}
+                onChange={() => handleEnableLink(link.name)}
+                className={`relative inline-flex items-center h-6 w-11 rounded-full ${link.enabled ? 'bg-blue-600' : 'bg-gray-300'} transition-colors duration-300`}
+            >
+                <span className="sr-only">Activar/Desactivar</span>
+                <span
+                    className={`inline-block w-5 h-5 bg-white rounded-full transform transition-transform duration-300 ${link.enabled ? 'translate-x-6' : 'translate-x-1'}`}
+                />
+            </Switch>
+        </div>
+    );
 }

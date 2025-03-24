@@ -1,52 +1,46 @@
-import { Link } from 'react-router-dom'
-import { IoMdLink } from 'react-icons/io'
-import { useState } from 'react'
-import { FiCopy, FiCheck } from 'react-icons/fi'
+import { useState } from 'react';
+import { FiCopy, FiCheck, FiExternalLink } from 'react-icons/fi';
 
 export default function VisitMyProfile({ handle }: { handle: string }) {
-
-
-    const [isCopied, setIsCopied] = useState(false)
+    const [isCopied, setIsCopied] = useState(false);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(`${window.location.origin}/${handle}`)
-        setIsCopied(true)
+        navigator.clipboard.writeText(`${window.location.origin}/${handle}`);
+        setIsCopied(true);
         setTimeout(() => {
-            setIsCopied(false)
-        }, 2000)
-    }
-
+            setIsCopied(false);
+        }, 2000);
+    };
 
     return (
-        <div className="flex justify-end items-center gap-3">
-            <div className="flex items-center">
-                <IoMdLink className="text-4xl text-indigo-600" />
-                <Link
-                    className="font-bold text-indigo-500 text-xl hover:text-indigo-600 transition-colors"
-                    to={`/${handle}`}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                >
-                    Visitar mi perfil: /{handle}
-                </Link>
-            </div>
-
+        <div className="flex items-center justify-end gap-4 pt-4 pr-4">
             <button
                 onClick={handleCopy}
-                className="flex items-center px-4 py-2  text-gray-600 rounded-lg hover:text-gray-900 transition-colors focus:outline-none"
+                className="flex items-center px-3 py-2 bg-indigo-100 text-indigo-600 rounded-md hover:bg-indigo-200 transition-colors focus:outline-none"
+                aria-label={isCopied ? "Enlace copiado" : "Copiar enlace"}
             >
                 {isCopied ? (
                     <>
-                        <FiCheck className="text-xl" />
-                        <span className="ml-2">Copiado</span>
+                        <FiCheck className="text-lg" />
+                        <span className="ml-2 text-sm">Copiado</span>
                     </>
                 ) : (
                     <>
-                        <FiCopy className="text-xl" />
-                        <span className="ml-2">Copiar</span>
+                        <FiCopy className="text-lg" />
+                        <span className="ml-2 text-sm">Copiar</span>
                     </>
-                ) }
+                )}
             </button>
+            <a
+                href={`/${handle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-indigo-500 hover:text-indigo-700 transition-colors"
+                aria-label={`Visitar perfil: ${handle}`}
+            >
+                <FiExternalLink className="text-lg" />
+                <span className="ml-1 text-sm">Visitar</span>
+            </a>
         </div>
     );
 }

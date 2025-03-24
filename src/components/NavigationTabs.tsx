@@ -40,8 +40,8 @@ export default function NavigationTabs() {
             </div>
 
             <div className="hidden sm:block mx-6">
-                <div className="border-b-2 border-gray-200">
-                    <nav className=" flex space-x-8"  aria-label="Tabs">
+                <div className="border-gray-200">
+                    <nav className=" flex flex-col space-y-6"  aria-label="Tabs">
                         {tabs.map((tab) => (
                             <Link
                                 key={tab.name}

@@ -8,9 +8,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import MiLinkPantalla from './MiLinkPantalla';
 
 import { SocialNetwork, type User } from '../types';
-import Header from './Header';
 import VisitMyProfile from './VisitMyProfile';
-import Footer from '../layouts/Footer';
 
 // Tipado de las propiedades que recibe el componente
 type MiLinkProps = {
@@ -74,31 +72,25 @@ export default function MiLink({ data }: MiLinkProps) {
 
     return (
         <>
-            {/* Componente Header */}
-            <Header />
-
             {/* Contenedor principal */}
-            <div className="bg-gray-100 min-h-screen md:m-2">
+            <div className="">
                 <main className="mx-auto max-w-5xl md:p-0">
-                    {/* Tabs de navegación */}
-                    {/* <NavigationTabs /> */}
 
                     {/* Enlace para visitar el perfil del usuario */}
-                    <VisitMyProfile 
-                        handle={data.handle} 
+                    <VisitMyProfile
+                        handle={data.handle}
                     />
 
                     {/* Contenido principal de la página */}
-                    <div className="flex flex-col md:flex-row gap-10 mt-2">
-                        <div className="flex-1">
-                            {/* Cargar el contenido del Outlet según la ruta activa */}
+                    <div className="flex flex-col md:flex-row md:mt-10 md:space-y-10">
+                        <div className="flex-1 px-1 md:px-10 py-4">
                             <Outlet />
                         </div>
 
                         {/* Panel lateral con información del perfil */}
-                        <div className="w-full md:w-96 bg-slate-800 px-5 py-10 space-y-6">
+                        <div className="w-full md:w-96 bg-gray-900 px-5 py-10 space-y-4 rounded-xl">
                             {/* Nombre de usuario */}
-                            <p className="text-3xl text-center text-white">{data.handle}</p>
+                            <p className="text-3xl text-center text-gray-500">{data.handle}</p>
 
                             {/* Imagen del perfil si está disponible */}
                             {data.image && (
@@ -110,7 +102,7 @@ export default function MiLink({ data }: MiLinkProps) {
                             )}
 
                             {/* Descripción del perfil */}
-                            <p className="text-center text-lg text-white">{data.description}</p>
+                            <p className="text-center text-lg text-gray-500">{data.description}</p>
 
                             {/* Componente de Drag & Drop */}
                             <DndContext
@@ -134,7 +126,7 @@ export default function MiLink({ data }: MiLinkProps) {
                 </main>
             </div>
 
-            <Footer />
+            {/* <Footer /> */}
 
             {/* Toaster para mostrar notificaciones */}
             <Toaster position="top-right" />

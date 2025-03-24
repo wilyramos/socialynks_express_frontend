@@ -2,6 +2,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getUserByHandle } from '../api/DevLinkAPI';
 import HandleData from '../components/HandleData';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 export default function HandleView() {
 
@@ -14,7 +15,13 @@ export default function HandleView() {
     })
 
     if (isLoading) {
-        return <p className='text-center'>Cargando...</p>
+        return (
+            <>
+                <div className="flex justify-center items-center pt-20"> {/* Ancho completo en móvil, 5/6 en sm y más */}
+                    <ClipLoader color={"#4A90E2"} loading={isLoading} size={50} />
+                </div>
+            </>
+        )
     }
 
     if(error) return <Navigate to="/404" />

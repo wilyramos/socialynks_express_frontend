@@ -37,9 +37,7 @@ export default function Router() {
             <Route path="/404" element={<AuthLayout />}>
                 <Route element={<NotFoundView />} index={true}/>
             </Route>
-
             {/* Ruta para el 404 en general */}           
-            
         </Routes>
     </BrowserRouter>
   );
