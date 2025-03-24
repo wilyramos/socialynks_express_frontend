@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+**# 📌 Frontend - SocialLynks Todos tus enlaces en un solo lugar**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**#Demo**: [https://socialynks.vercel.app/](https://socialynks.vercel.app/)
 
-Currently, two official plugins are available:
+Este es el frontend de la aplicación de gestión de enlaces de redes sociales, SocialLynks. Permite a los usuarios crear una página personalizada con todos sus enlaces importantes, facilitando el acceso a su contenido en diversas plataformas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Dependencias Utilizadas
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+* **React:** Biblioteca de JavaScript para construir interfaces de usuario.
+* **React Router DOM:** Para la navegación entre las diferentes páginas de la aplicación.
+* **Axios:** Cliente HTTP basado en promesas para realizar solicitudes al backend.
+* **@tanstack/react-query:** Para la gestión de datos asíncronos y caché.
+* **react-hook-form:** Para el manejo de formularios de manera eficiente.
+* **react-slugify:** Para generar slugs (URLs amigables) a partir de cadenas de texto.
+* **react-spinners:** Para mostrar indicadores de carga.
+* **sonner:** Para mostrar notificaciones.
+* **@dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities:** Para la funcionalidad de arrastrar y soltar (drag and drop).
+  
+## ️ 🛠 Instalación y Configuración
+Clona el repositorio:
+   ```
+git clone https://github.com/wilyramos/socialynks_express_frontend.git
+cd frontend
+npm install
+npm run dev
+```
+Configura el .env
+```
+VITE_BACKEND_URL=http://localhost:4000
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## ✅ Scripts Disponibles
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+* `npm run dev`: Inicia el servidor de desarrollo.
+* `npm run build`: Construye la aplicación para producción.
+* `npm run preview`: Previsualiza la construcción de producción localmente.
+
+##  Contribución
+
+¡Las contribuciones son bienvenidas! Si encuentras errores o tienes ideas para mejorar la aplicación, por favor abre un issue o envía un pull request.
+
+---
+
+Este proyecto está bajo la licencia MIT. Puedes usarlo y modificarlo libremente.
