@@ -45,8 +45,6 @@ export default function RegisterView() {
             loadingToast && toast.dismiss(loadingToast)
             reset()
             navigate('/admin')
-            navigate('/admin')
-
 
         } catch (error) {
             toast.dismiss(loadingToast)
