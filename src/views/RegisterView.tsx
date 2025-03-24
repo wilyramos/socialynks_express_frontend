@@ -43,7 +43,7 @@ export default function RegisterView() {
             // toast.success(data)
             // console.log(data)
             loadingToast && toast.dismiss(loadingToast)
-            reset()
+            // reset()
             navigate('/admin')
 
         } catch (error) {
