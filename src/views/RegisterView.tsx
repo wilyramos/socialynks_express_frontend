@@ -37,10 +37,18 @@ export default function RegisterView() {
         setLoading(true)
         try {
             const { data } = await api.post(`/auth/register`, formData)
-            toast.success(data)
+            // save token in localstorage
+            localStorage.setItem('token_milink_auth', data)
+            toast.success('Cuenta creada exitosamente')
+            
+            // toast.success(data)
+            // console.log(data)
             loadingToast && toast.dismiss(loadingToast)
             reset()
-            navigate('/auth/login')
+            navigate('/admin')
+            navigate('/admin')
+
+
         } catch (error) {
             toast.dismiss(loadingToast)
             if (isAxiosError(error) && error.response) {

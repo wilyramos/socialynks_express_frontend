@@ -5,10 +5,18 @@ import type { LoginForm } from "../types";
 import { toast } from "sonner";
 import api from "../config/axios";
 import { isAxiosError } from "axios";
+import { useEffect } from "react";
 
 export default function LoginView() {
 
     const navigate = useNavigate()
+    // verify if user is authenticated
+    useEffect(() => {
+        const token = localStorage.getItem('token_milink_auth')
+        if (token) {
+            navigate('/admin')
+        }
+    }, [navigate])
 
     // initialValues for type RegisterForm
     const initialValues: LoginForm = {
@@ -22,7 +30,7 @@ export default function LoginView() {
 
     const handleLogin = async (formData: LoginForm) => {
         const loadingToast = toast.loading('Iniciando sesión')
-        console.log(loadingToast)
+        // console.log(loadingToast)
         try {
             const { data } = await api.post(`/auth/login`, formData)
             localStorage.setItem('token_milink_auth', data)

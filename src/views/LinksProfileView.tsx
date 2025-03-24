@@ -25,7 +25,7 @@ export default function LinksProfileView() {
             toast.error(error.message)
         },
         onSuccess: () => {
-            console.log("Perfil actualizado")
+            // console.log("Perfil actualizado")
             toast.success("Perfil actualizado")
         }
     })
@@ -115,7 +115,7 @@ export default function LinksProfileView() {
             }))
         }
 
-        console.log(updatedItems)
+        // console.log(updatedItems)
 
         // Actualizar los links del usuario en la base de datos
         queryClient.setQueryData(['user'], (prevData: User) => {
